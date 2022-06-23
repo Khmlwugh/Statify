@@ -1,9 +1,10 @@
 import React from 'react'
+import Grid from './Grid.js'
 
 function App() {
   return (
     <div>
-      Statify Init
+      <Grid></Grid>
     </div>
   );
 }
