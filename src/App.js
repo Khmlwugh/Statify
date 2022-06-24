@@ -1,13 +1,10 @@
 import React from 'react'
-import Grid from './Grid.js'
 import {Credentials} from './Credentials'
-
-
-
 
 function App() {
   const [token, setToken] = React.useState("")
-  const [data, setData] = React.useState("")
+  const [spotifyData, setData] = React.useState({})
+  const [countryCode, setCountry] = React.useState("")
 
   const statify = Credentials() 
 
@@ -29,7 +26,7 @@ function App() {
 
 
   async function searchReleases(){
-    let releases = await fetch('https://api.spotify.com/v1/browse/new-releases', {
+    await fetch('https://api.spotify.com/v1/browse/new-releases?limit=50&country=KR', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -42,9 +39,18 @@ function App() {
     })
   }
 
+  function Form(){
+
+    return (
+      <Form>
+        <label htmlFor='country'>Country</label>
+      </Form>)
+  }
+
   return (
     <div>
-      <Grid fetchdata = {data} whenClick= {searchReleases}></Grid>
+      <button onClick={searchReleases}>Get Data</button>
+      {spotifyData.map((element) => <div>{element.name} by {element.artists[0].name}</div>)}
     </div>
   );
 }
