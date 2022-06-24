@@ -23,9 +23,9 @@ function Cell(props){
   )
 };
 
-function Grid(){
+function Grid(props){
   return (
-    <Container>
+    <Container onClick={props.whenClick}>
       <Cell>Cell 1</Cell>
       <Cell>Cell 2</Cell>
       <Cell>Cell 3</Cell>
