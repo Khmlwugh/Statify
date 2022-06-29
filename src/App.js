@@ -1,9 +1,11 @@
 import React from 'react'
 import {Credentials} from './Credentials'
+import countries2 from './Countries2'
+import List from './List'
 
 function App() {
   const [token, setToken] = React.useState("")
-  const [spotifyData, setData] = React.useState({})
+  const [spotifyData, setData] = React.useState("")
   const [countryCode, setCountry] = React.useState("")
 
   const statify = Credentials() 
@@ -25,8 +27,9 @@ function App() {
   }, [statify.ClientId, statify.ClientSecret]);
 
 
-  async function searchReleases(){
-    await fetch('https://api.spotify.com/v1/browse/new-releases?limit=50&country=KR', {
+  async function searchReleases(event){
+    event.preventDefault();
+    await fetch(`https://api.spotify.com/v1/browse/new-releases?limit=10&country=${countries2[countryCode]}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -35,22 +38,27 @@ function App() {
     .then(response => response.json())
     .then(res => {
       console.log(res.albums.items);
-      setData(res.albums.items)
-    })
+      setData(res.albums.items);
+      console.log('lonely roads');
+    });
   }
 
   function Form(){
-
     return (
-      <Form>
-        <label htmlFor='country'>Country</label>
-      </Form>)
+      <form onSubmit={searchReleases}>
+        <label htmlFor='country'>Country: </label>
+        <select value={countryCode} onChange={(e) => setCountry(e.target.value)} type='dropdown'>
+          <option key={0}> Select country...</option>
+          {Object.keys(countries2).map((item, index) => <option key = {index + 1}>{item}</option>)}
+        </select>
+        <button type='submit' >Get Data</button>
+      </form>)
   }
 
   return (
     <div>
-      <button onClick={searchReleases}>Get Data</button>
-      {spotifyData.map((element) => <div>{element.name} by {element.artists[0].name}</div>)}
+      <Form/>
+      <List list={spotifyData}/>
     </div>
   );
 }
