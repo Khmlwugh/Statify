@@ -46,29 +46,54 @@ function App() {
     });
   }
 
-  function Form(){
-    return (
-      <form onSubmit={searchReleases}>
-        <label htmlFor='fetch'>Country: </label>
-        <select value={countryCode} onChange={(e) => setCountry(e.target.value)} type='dropdown'>
-          <option key={0}> Select country...</option>
-          {Object.keys(countries2).map((item, index) => <option key = {index + 1}>{item}</option>)}
-        </select>
-        <label htmlFor='fetch'>Results: </label>
-        <select value={number} onChange={(e) => setNumber(e.target.value)}  type='dropdown'>
-          {ListOptions.map((item) => <option key={item}>{item}</option> )}
-        </select>
-        <button type='submit' >Get Data</button>
-      </form>)
-  }
 
-  const AppContainer = styled.div`
-    background-color: #E8EBE4;
-    height: 100vh;
-    padding: 10px;
-
+  const StyledForm = styled.form`
+    height: 10vh;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & .formLabel{
+      padding: 5px;      
+    };
+    & .formButton{
+      margin: 0px 30vw;
+    }
+    & .formSelect{
+      width: 300px;
+    }
   `
 
+  const AppContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    background-color: #E8EBE4;
+    height: 100vh;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+
+  `
+  function Form(){
+    return (
+      <StyledForm onSubmit={searchReleases}>
+        <div>
+          <label className='formLabel' htmlFor='fetch'>Country: </label>
+          <select className='formSelect' value={countryCode} onChange={(e) => setCountry(e.target.value)} type='dropdown'>
+            <option key={0}> Select country...</option>
+            {Object.keys(countries2).map((item, index) => <option key = {index + 1}>{item}</option>)}
+          </select>
+        </div>
+        <div>
+          <label className='formLabel' htmlFor='fetch'>Results: </label>
+          <select className='formSelect' value={number} onChange={(e) => setNumber(e.target.value)}  type='dropdown'>
+            {ListOptions.map((item) => <option key={item}>{item}</option> )}
+          </select>
+        </div>
+        <button className='formButton' type='submit' >Get Data</button>
+      </StyledForm>)
+  }
 
   return (
     <AppContainer>
