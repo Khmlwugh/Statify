@@ -3,6 +3,7 @@ import {Credentials} from './Credentials'
 import countries2 from './Countries2'
 import List from './List'
 import ListOptions from './ListOptions'
+import styled from 'styled-components'
 
 function App() {
   const [token, setToken] = React.useState("")
@@ -53,7 +54,7 @@ function App() {
           <option key={0}> Select country...</option>
           {Object.keys(countries2).map((item, index) => <option key = {index + 1}>{item}</option>)}
         </select>
-        <label htmlFor='fetch'>Number: </label>
+        <label htmlFor='fetch'>Results: </label>
         <select value={number} onChange={(e) => setNumber(e.target.value)}  type='dropdown'>
           {ListOptions.map((item) => <option key={item}>{item}</option> )}
         </select>
@@ -61,11 +62,19 @@ function App() {
       </form>)
   }
 
+  const AppContainer = styled.div`
+    background-color: #E8EBE4;
+    height: 100vh;
+    padding: 10px;
+
+  `
+
+
   return (
-    <div>
+    <AppContainer>
       <Form/>
       <List list={spotifyData}/>
-    </div>
+    </AppContainer>
   );
 }
 
