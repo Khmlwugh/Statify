@@ -1,9 +1,10 @@
 import React from 'react'
 import {Credentials} from './Credentials'
-import countries2 from './Countries2'
+import countriesList from './CountriesList'
 import List from './List'
 import ListOptions from './ListOptions'
 import styled from 'styled-components'
+import Footer from './pages/new-releases/components/Footer'
 
 function App() {
   const [token, setToken] = React.useState("")
@@ -32,7 +33,7 @@ function App() {
 
   async function searchReleases(event){
     event.preventDefault();
-    await fetch(`https://api.spotify.com/v1/browse/new-releases?limit=${number}&country=${countries2[countryCode]}`, {
+    await fetch(`https://api.spotify.com/v1/browse/new-releases?limit=${number}&country=${countriesList[countryCode]}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -45,7 +46,6 @@ function App() {
       console.log('lonely roads');
     });
   }
-
 
   const StyledForm = styled.form`
     height: 10vh;
@@ -82,7 +82,7 @@ function App() {
           <label className='formLabel' htmlFor='fetch'>Country: </label>
           <select className='formSelect' value={countryCode} onChange={(e) => setCountry(e.target.value)} type='dropdown'>
             <option key={0}> Select country...</option>
-            {Object.keys(countries2).map((item, index) => <option key = {index + 1}>{item}</option>)}
+            {Object.keys(countriesList).map((item, index) => <option key = {index + 1}>{item}</option>)}
           </select>
         </div>
         <div>
@@ -99,6 +99,7 @@ function App() {
     <AppContainer>
       <Form/>
       <List list={spotifyData}/>
+      <Footer/>
     </AppContainer>
   );
 }

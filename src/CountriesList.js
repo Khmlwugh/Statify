@@ -1,4 +1,4 @@
-const countries2 = { 
+const countriesList = { 
             "Andorra": "AD",
             "United Arab Emirates": "AE",
             "Afghanistan": "AF" ,
@@ -271,4 +271,4 @@ const countries2 = {
             "Zambia": "ZM",
             "Zimbabwe": "ZW"}
 
-export default countries2
+export default countriesList
