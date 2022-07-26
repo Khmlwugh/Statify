@@ -8,7 +8,7 @@ const StyledFooter = styled.div`
   bottom: 0;
   background-color: black;
   width: 100%;
-  height: 150px;
+  height: 125px;
   color: white;
 
   & a{
@@ -20,8 +20,26 @@ const StyledFooter = styled.div`
   }
 
   & .footer_tech{
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div{
+      padding: 3px 0px;
+    }
   }
+  & .footer_contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div {
+      padding: 2px 0px;
+    }
+
+    a{
+      padding: 2px 0px;
+    }
+  }
+
 
 `
 

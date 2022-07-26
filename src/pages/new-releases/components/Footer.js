@@ -7,6 +7,9 @@ function Footer(){
         <div className="footer_tech_text">
           Build using:
         </div >
+        <div className="footer_tech_text">
+          React
+        </div>
         <a className="footer_tech_link" href='https://developer.spotify.com/documentation/web-api/' alt=''>The Spotify API</a>
       </div>
       <div className="footer_contact">

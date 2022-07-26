@@ -60,7 +60,17 @@ const SelectText = styled.div`
 `
 
 const List = (props) => {
-  if (props.list){
+  if (props.list == "error"){
+    return(
+      <div>
+        The selected country is not returning any information. Please change your pick and try again.
+      </div>
+    )
+  }
+  
+  
+  
+  else if(props.list){
     return (
       <ListContainer>
       {props.list.map((item, index)=>{

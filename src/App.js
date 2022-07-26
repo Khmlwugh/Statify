@@ -1,8 +1,8 @@
 import React from 'react'
 import {Credentials} from './Credentials'
-import countriesList from './CountriesList'
+import countriesList from './pages/new-releases/utils/CountriesList.js'
 import List from './List'
-import ListOptions from './ListOptions'
+import ListOptions from './pages/new-releases/utils/ListOptions.js'
 import styled from 'styled-components'
 import Footer from './pages/new-releases/components/Footer'
 
@@ -15,7 +15,7 @@ function App() {
   const statify = Credentials() 
 
   React.useEffect(() => {
-    console.log("dentro")
+    document.title = 'Statify'
 
     fetch('https://accounts.spotify.com/api/token', {
       method: 'POST',
@@ -43,25 +43,45 @@ function App() {
     .then(res => {
       console.log(res.albums.items);
       setData(res.albums.items);
-      console.log('lonely roads');
-    });
+    })
+    .catch(error => {
+      setData("error");
+      console.log(spotifyData)
+  })
   }
 
   const StyledForm = styled.form`
-    height: 10vh;
-    padding: 0px;
+    height: 20vh;
+    padding: 0px 0px 20px 0px;
     margin: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    & .formLabel{
-      padding: 5px;      
-    };
-    & .formButton{
-      margin: 0px 30vw;
+    & .form_input{
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
     }
-    & .formSelect{
-      width: 300px;
+    & .form_label{
+      padding: 5px;
+      font-size: 20px; 
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+
+    }
+    & .form_select{
+      width: 200px;
+    }
+    & .form_button{
+      background-color: #1DB954;
+      border-radius: 15px;
+      border: none;
+      padding: 3px 6px;
+      width: 80px;
+      height: 25px;
+      cursor: pointer;
     }
   `
 
@@ -78,20 +98,20 @@ function App() {
   function Form(){
     return (
       <StyledForm onSubmit={searchReleases}>
-        <div>
-          <label className='formLabel' htmlFor='fetch'>Country: </label>
-          <select className='formSelect' value={countryCode} onChange={(e) => setCountry(e.target.value)} type='dropdown'>
+        <div className='form_input'>
+          <label className='form_label' htmlFor='fetch'>Country: </label>
+          <select className='form_select' value={countryCode} onChange={(e) => setCountry(e.target.value)} type='dropdown'>
             <option key={0}> Select country...</option>
             {Object.keys(countriesList).map((item, index) => <option key = {index + 1}>{item}</option>)}
           </select>
         </div>
-        <div>
-          <label className='formLabel' htmlFor='fetch'>Results: </label>
-          <select className='formSelect' value={number} onChange={(e) => setNumber(e.target.value)}  type='dropdown'>
+        <div className='form_input'>
+          <label className='form_label' htmlFor='fetch'>Results: </label>
+          <select className='form_select' value={number} onChange={(e) => setNumber(e.target.value)}  type='dropdown'>
             {ListOptions.map((item) => <option key={item}>{item}</option> )}
           </select>
         </div>
-        <button className='formButton' type='submit' >Get Data</button>
+        <button className='form_button' type='submit'>GO</button>
       </StyledForm>)
   }
 
