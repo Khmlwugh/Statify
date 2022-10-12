@@ -30,7 +30,8 @@ const ListBox = styled.div`
       font-size: 20px;
       text-decoration:none;
       padding: 5px;
-      align-text: center;
+      text-align: center;
+      flex: 1;
 
     }
     & .artistName{
