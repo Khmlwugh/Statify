@@ -51,12 +51,13 @@ function App() {
   }
 
   const StyledForm = styled.form`
-    height: 20vh;
-    padding: 0px 0px 20px 0px;
+    height: 110px;
+    padding: 0px;
     margin: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     & .form_input{
       display: flex;
       align-items: center;
@@ -78,7 +79,6 @@ function App() {
       background-color: #1DB954;
       border-radius: 15px;
       border: none;
-      padding: 3px 6px;
       width: 80px;
       height: 25px;
       cursor: pointer;

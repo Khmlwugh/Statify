@@ -14,7 +14,7 @@ function Footer(){
       </div>
       <div className="footer_contact">
         <div className="footer_contact_text">
-          Created by Gabriel Flores
+          Created by <h4>Gabriel Flores</h4> 
         </div >
         <a className='footer_contact_link' href='https://www.linkedin.com/in/dev-gabriel-flores' alt=''>LinkedIn</a> 
       </div>

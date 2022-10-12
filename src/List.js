@@ -49,8 +49,9 @@ const ListContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #E8EBE4;
-  padding: 0px auto;
+  padding: 0px 0px 100px 0px;
   width: 100%;
+  margin: 10px 0px;
 `
 
 const SelectText = styled.div`
@@ -60,7 +61,7 @@ const SelectText = styled.div`
 `
 
 const List = (props) => {
-  if (props.list == "error"){
+  if (props.list === "error"){
     return(
       <div>
         The selected country is not returning any information. Please change your pick and try again.
@@ -76,7 +77,7 @@ const List = (props) => {
       {props.list.map((item, index)=>{
         return (
           <ListBox key={index}>
-            <a className='albumImage' target="_blank" rel="noopener noreferrer" href={item.images[0].url}>
+            <a className='albumImage' target="_blank" rel="noopener noreferrer" href={item.external_urls.spotify}>
               <img className='image' src={item.images[1].url} alt=''/>
             </a>
             <div className='textBox'>
