@@ -96,8 +96,8 @@ const List = (props) => {
       <SelectText>
         <h2>Instructions</h2>
 
-        Select a country to view the latest releases (both LPs and EPs) relatable to the country,
-         and select how many results to show.
+        Select a country to view the latest releases (both LPs and EPs) relevant to that country,
+        and select how many results to show.
 
       </SelectText>
     )
