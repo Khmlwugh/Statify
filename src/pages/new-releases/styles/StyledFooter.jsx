@@ -32,14 +32,24 @@ const StyledFooter = styled.div`
     flex-direction: column;
     align-items: center;
     div {
-      padding: 2px 0px;
+      padding: 5px 0px;
     }
 
     a{
       padding: 2px 0px;
     }
-    h4{
+    & .footer_contact_text{
+      display:flex; 
+      justify-content: center;
+      align-items: center;  
+
+    }
+    h3{
       margin: 0px;
+      padding-left: 10px;
+      &:hover{
+        color:#1DB954;
+      }
     }
   }
 

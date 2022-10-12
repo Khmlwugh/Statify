@@ -14,7 +14,8 @@ function Footer(){
       </div>
       <div className="footer_contact">
         <div className="footer_contact_text">
-          Created by <h4>Gabriel Flores</h4> 
+          <div>Created by:</div>
+          <h3><a target='_blank' href='gabrielflores.netlify.app'>Gabriel Flores</a></h3> 
         </div >
         <a className='footer_contact_link' href='https://www.linkedin.com/in/dev-gabriel-flores' alt=''>LinkedIn</a> 
       </div>
